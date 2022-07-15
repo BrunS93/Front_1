@@ -5,8 +5,6 @@ class Usuario{
         this.apellido=apellido;
         this.libros=libros;
         this.mascotas=mascotas;
-
-
     }
 
 
