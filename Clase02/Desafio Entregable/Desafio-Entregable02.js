@@ -53,7 +53,7 @@ class Contenedor{
             
             }
             contenido=JSON.parse(contenido)
-            let numeros=contenido.map((x)=>x.id).sort();
+            let numeros=contenido.map((x)=>x.id).sort((a, b) => a.id - b.id);
             Object.id=numeros[numeros.length-1]+1;
             contenido.push(Object)
             console.log(`Ultimo ID guardado : ${Object.id}`)
