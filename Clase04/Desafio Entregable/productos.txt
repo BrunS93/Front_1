@@ -1,0 +1,32 @@
+[
+  {
+    "title": "animal",
+    "price": 154.54,
+    "thumbnail": "https://concepto.de/wp-content/uploads/2019/03/jaguar-e1553120938962.jpg",
+    "id": 1
+  },
+  {
+    "title": "animal",
+    "price": 154.54,
+    "thumbnail": "https://concepto.de/wp-content/uploads/2019/03/jaguar-e1553120938962.jpg",
+    "id": 2
+  },
+  {
+    "title": "animal",
+    "price": 154.54,
+    "thumbnail": "https://concepto.de/wp-content/uploads/2019/03/jaguar-e1553120938962.jpg",
+    "id": 3
+  },
+  {
+    "title": "animal",
+    "price": 154.54,
+    "thumbnail": "https://concepto.de/wp-content/uploads/2019/03/jaguar-e1553120938962.jpg",
+    "id": 4
+  },
+  {
+    "title": "animal",
+    "price": 154.54,
+    "thumbnail": "https://concepto.de/wp-content/uploads/2019/03/jaguar-e1553120938962.jpg",
+    "id": 5
+  }
+]
