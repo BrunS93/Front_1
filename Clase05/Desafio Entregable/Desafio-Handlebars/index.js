@@ -1,7 +1,8 @@
 const express = require('express');
+const app = express();
 const {Router}= express;
 const router = Router();
-const app = express();
+const { engine } = require("express-handlebars");
 const PORT = 8080;
 const Contenedor = require("./Productos");
 const metodProductos=new Contenedor("productos.txt");
@@ -12,29 +13,39 @@ const server = app.listen(PORT, () => {
 });
 
 server.on('error', (error) => console.log(`Error en servidor ${error}`));
-
 app.use('/public', express.static(__dirname + '/public'));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/",router)
-app.set('view engine', 'ejs');
+
+app.set('view engine', 'hbs');
+app.set('views', './views');
+app.engine(
+  'hbs',
+  engine({
+    extname: '.hbs',
+    defaultLayout: 'index.hbs',
+    layoutsDir: __dirname + '/views/layouts',
+    partialsDir: __dirname + '/views/partials',
+  })
+);
 
 
 
-router.get('/', (req, res) => { //raiz
-  console.log('aqui products');
-  res.render('pages/index', { title: 'Ingreso de productos'});
+router.get('/', (req, res) => {
+  
+  res.render('indexform', { products: "Ingreso de Productos"});
 });
 
-
-router.post('/api/products', (req, res) => {
+router.post('/', (req, res) => {
   const {body} =req;
   body.price= parseFloat(body.price)
   async function postear(){
     try {
      await metodProductos.save(body)
     } catch (error) {
-      return res.render('pages/error',{title: "Error en servidor", vacio: "No se pudieron guardar los productos!"})
+      return res.render('error',{title: "Error en servidor", vacio: "No se pudieron guardar los productos!"})
     }
   }
   postear();
@@ -42,16 +53,13 @@ router.post('/api/products', (req, res) => {
 });
 
 router.get('/api/products', (req, res) => {
-  console.log('aqui products');
-  
   async function gettodo(){
     lista1= await metodProductos.getAll();
     if(!lista1){
-      return res.render('pages/error',{title: "Vista de Productos", vacio: "No se encontraron productos!"})
+      return res.render('error',{title: "Vista de Productos", vacio: "No se encontraron productos!"})
     }
 
-    return res.render('pages/indexGetproducts', { title: 'Vista de Productos', lista : lista1});
+    return res.render('productslist', { title: 'Vista de Productos', lista : lista1});
   }
   gettodo();
-  
 });

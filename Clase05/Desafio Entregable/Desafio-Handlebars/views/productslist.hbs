@@ -1,0 +1,28 @@
+{{> na-list}}
+<br/>
+
+<h1>{{title}}</h1>
+<table class="tabla">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Foto</th>
+            </tr>
+        </thead>
+        {{#each lista}}
+        <tbody>
+                <tr >
+                    <td>{{this.title}} </td>
+                    <td>${{this.price}}</td>
+                    <td>
+                        <img src={{this.thumbnail}} />
+                    </td>
+                </tr>
+            </tbody>
+        {{/each}}
+</table>
+
+<br/>
+{{> footer}}
+<br/>

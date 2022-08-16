@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Calculadora",
+    "price": 14.54,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-128.png",
+    "id": 1
+  },
+  {
+    "title": "Escuadra",
+    "price": 1534.54,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png",
+    "id": 2
+  },
+  {
+    "title": "Reloj",
+    "price": 15.54,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png",
+    "id": 3
+  },
+  {
+    "title": "Camion",
+    "price": 10054.54,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/bus-vehicle-transport-school-128.png",
+    "id": 4
+  },
+  {
+    "title": "Manzana",
+    "price": 4.54,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/apple-fruit-science-school-128.png",
+    "id": 5
+  },
+  {
+    "title": "Paleta de pintura",
+    "price": 14.5,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/paint-color-pallete-brush-academy-256.png",
+    "id": 6
+  },
+  {
+    "title": "Microscopio",
+    "price": 454.58,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/microscope-lab-science-school-256.png",
+    "id": 7
+  },
+  {
+    "title": "multicons",
+    "price": 154,
+    "thumbnail": "https://icons.iconarchive.com/icons/thesquid.ink/free-flat-sample/icons-390.jpg",
+    "id": 8
+  }
+]
