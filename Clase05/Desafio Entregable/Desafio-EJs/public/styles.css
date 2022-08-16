@@ -1,0 +1,87 @@
+body{
+  background-color: #E9ECEF
+}
+
+.footer {
+  color: rgb(48, 44, 44);
+  padding: 2rem;
+  margin: 4rem auto;
+  text-align: center;
+  background-color: rgba(178, 236, 240, 0.534);
+}
+
+.product-img {
+  width: 300px;
+  max-width: 300px;
+  height: 200px;
+  max-height: 200px;
+}
+
+h1 {
+  font-family: 'Lucida Console', 'Courier New', monospace;
+  text-align: center;
+}
+
+form{
+  background-color:  #E9ECEF;
+  text-align: center;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items:stretch;
+  width: 50%;
+  padding: 1rem 2rem;
+  margin: 0 auto;
+  border-radius: 10px;
+
+}
+
+.butn{
+  background-color: rgb(32, 99, 104);
+  color: #E9ECEF;
+  border: none;
+  margin-top: 1rem;
+}
+
+.butn:hover{
+  background-color:rgb(55, 158, 165) ;
+}
+
+.nav-bar{
+  width: 10%;
+  display: block;
+  padding: 1rem;
+  margin: 0 80%;
+  text-align: center;
+  list-style: none;
+  background-color: antiquewhite;
+  border-radius: 25px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  text-decoration: none;
+  color: black;
+  box-sizing: border-box;
+}
+
+.nav-bar:hover{
+  background-color: rgb(177, 188, 197);
+  color: white;
+  transform: translateY(0.2);
+  transition: 0.2s;
+}
+
+
+
+.tabla{
+  width: 80%;
+  margin: 2rem auto;
+  text-align: center;
+  border: 2px black solid;
+  background-color: aliceblue;
+}
+
+.tabla td{
+  border: 2px black solid;
+}
+.tabla img{
+  height: 3.1rem;
+}

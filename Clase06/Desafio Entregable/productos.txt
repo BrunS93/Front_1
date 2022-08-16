@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Calculadora",
+    "price": 14.54,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-128.png",
+    "id": 1
+  },
+  {
+    "title": "Escuadra",
+    "price": 1534.54,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png",
+    "id": 2
+  },
+  {
+    "title": "Reloj",
+    "price": 15.54,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png",
+    "id": 3
+  },
+  {
+    "title": "Skype",
+    "price": 14.5,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_skype-256.png",
+    "id": 4
+  },
+  {
+    "title": "meli",
+    "price": 154.54,
+    "thumbnail": "https://tuquejasuma.com/media/images/entity575_yJIz9pL.jpeg",
+    "id": 5
+  },
+  {
+    "title": "Calculadora",
+    "price": 154,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-128.png",
+    "id": 6
+  }
+]

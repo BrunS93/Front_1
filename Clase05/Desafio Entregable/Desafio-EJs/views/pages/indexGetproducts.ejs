@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body>
+    <%- include('../partials/navbarList'); %>
+    
+    <h1 class="titulo"><%=title %></h1>
+
+    
+  <table class="tabla">
+      <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Foto</th>
+          </tr>
+      </thead>
+  <% lista.forEach((item)=>{ %>
+      <tbody>
+          <tr >
+              <td><%=item.title%> </td>
+              <td>$<%=item.price%></td>
+              <td>
+                  <img src="<%=item.thumbnail %>" />
+              </td>
+          </tr>
+      </tbody>
+  <% }) %>
+
+  <!-- <%- include('../partials/footer'); %> -->
+
+
+   
+</body>
+</html>

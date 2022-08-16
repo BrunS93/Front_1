@@ -1,0 +1,33 @@
+
+<section>
+
+    <form action="/" method="post">
+        <label for="title">Tittle: </label>
+        <input type="text" id="title" name="title" placeholder="Title/Name">
+        
+        <label for="price">Price: </label>
+        <input type="text" id="price" name="price" placeholder="Price/USD">
+        
+        <label for="thumbnail">URL thumbnail: </label>
+        <input type="text" id="thumbnail" name="thumbnail" placeholder="URL /Directory">
+        
+        <input  class= "butn" type="submit" value="ENVIAR PRODUCTO!">
+        
+    </form>
+
+    <table id="tabla"></table>
+
+</section>
+
+<section>
+    
+    <h2>Centro de Mensajes</h2>
+    
+        <input type="text" id="email" required ><span id="error"></span>
+        <hr>
+        <div id="chatarea">
+        </div>
+        <input type="text" id="msg">
+        <input onclick="enviarChat()" class= "butn" type="submit" value="Enviar!">
+   
+</section>
