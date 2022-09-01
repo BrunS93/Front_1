@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet"  href="./styles.css">
+    <title>Ecommerce de Supermecado a Domicilio</title>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li>Productos Frescos</li>
+            <li>Verduleria</li>
+            <li>Panificados</li>
+            <li>Hogar</li>
+            <li>Bebidas</li>
+        </ul>
+    </nav>
+
+</header>
+
+<section id="deCompras">
+     <h1>De Compras Market <i class="fa-solid fa-truck-fast"></i></h1>
+        
+     <h2>Haga sus pedidos de forma online y se lo llevamos a su domicilio</h2>
+
+      
+
+     
+        <label for="nombre">Ingrese nuevo producto</label>
+        <input type="text" name="producto" id="nombre">
+
+        <input type="radio" name="Admin" id="admin">
+        <label for="admin">Admin</label>
+
+        <label for="Usuario">Usuario</label>
+        <input type="radio" name="Usuario" id="Usuario">
+
+        <input type="button" onclick="envio()" value="Guardar Producto">
+        <input id="verButton" type="button" onclick="mostrarProducts()" value="Ver Productos">
+        <div id="deComprasProducts"></div>
+
+</section>
+
+     <div id="pokeapi"></div>
+     <script src="./index.js" ></script>
+</body>
+</html>
