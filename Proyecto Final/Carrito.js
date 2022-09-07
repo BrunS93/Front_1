@@ -13,11 +13,15 @@ class Contenedor{
 
     async save(Object){
        let arrayArchivo=[]
+       let time=Date.now();
+       let fecha=new Date(time).toLocaleDateString();
        try {
             let contenido= await fs.promises.readFile("./"+this.nombre,"utf-8");
             if(!contenido || contenido=="[]" || contenido=="{}")                               //si ya existe archivo vacio o con [] ejecuta esto
             {
                     Object.id=1;
+                    Object.TimestampCarrito=fecha
+                    Object.productos=[]
                     arrayArchivo.push(Object)
                     try {
                         await fs.promises.writeFile("./"+this.nombre,JSON.stringify(arrayArchivo))
@@ -28,14 +32,16 @@ class Contenedor{
                     }
             
             }
-            contenido=JSON.parse(contenido)
+            contenido=await JSON.parse(contenido)
             let numeros=contenido.map((x)=>x.id).sort((a, b) => a.id - b.id);
             Object.id=numeros[numeros.length-1]+1;
+            Object.TimestampCarrito=fecha;
+            Object.productos=[]
             contenido.push(Object)
             console.log(`Ultimo ID guardado : ${Object.id}`)
             try {
                 await fs.promises.writeFile("./"+this.nombre,JSON.stringify(contenido,null,2))
-                return Object;
+                return Object.id;
             } catch (error) {
                 console.log(`no se pudo escribir en el archivo : Error : ${error}`)
             }
@@ -62,6 +68,51 @@ class Contenedor{
        
        
     }
+
+
+    async saveInCarritoID(Objecto,carrito){
+        let arrayArchivo=[]
+        try {
+             let contenido= await fs.promises.readFile("./"+this.nombre,"utf-8");
+             if(!contenido || contenido=="[]" || contenido=="{}")                               //si ya existe archivo vacio o con [] ejecuta esto
+             {
+               console.log("Estas tratando de leer un archivo vacio!")
+               return false
+             }
+             contenido=JSON.parse(contenido)
+             let indexCarro=contenido.findIndex((e)=> e.id===carrito)
+             console.log("asd")
+             contenido[indexCarro].productos.push(Objecto)
+            
+             try {
+                 await fs.promises.writeFile("./"+this.nombre,JSON.stringify(contenido,null,2))
+                 return Objecto.id;
+             } catch (error) {
+                 console.log(`no se pudo escribir en el archivo : Error : ${error}`)
+             }
+        
+        } 
+ 
+        catch (error) {
+         if(error.code=="ENOENT"){
+             Objecto.id=1;
+             arrayArchivo.push(Objecto)
+             try {
+                 await fs.promises.writeFile("./"+this.nombre,JSON.stringify(arrayArchivo))
+                 console.log(`Ultimo ID guardado : ${Objecto.id}`)
+                 } 
+                 catch (error) {
+                   return console.log(`Hubo un error!  no se pudo crear el archivo!! Detalles: ${error}`)
+             }
+         }
+        else{
+             return console.log(`Error no se pudo ejecutar ninguna accion !! ${error} `)
+        }
+     
+     } 
+        
+        
+     }
     
     async getById(iddado){
         try {
@@ -134,6 +185,51 @@ class Contenedor{
             return false
         }
     }
+
+
+    async deleteByCarritoProd(iddado ,idprod){
+        try {
+            let lectura=await fs.promises.readFile("./"+this.nombre,"utf-8")
+            if(!lectura||lectura=="[]"|| lectura=="{}" )
+            {
+                console.log(`Estas tratando de leer un archivo vacio`)
+                return false
+            }
+            lectura= await JSON.parse(lectura)
+            
+                
+                let buscado=lectura.find(leido=>leido.id === iddado)
+                if(buscado==undefined){
+                     console.log(`el id de carrito no existe`)
+                     return false
+                }
+                let index=lectura.indexOf(buscado)
+                let buscado2=lectura[index].productos.find(leido=>leido.id===idprod)
+                if(buscado2==undefined){
+                    console.log(`el id de producto no existe`)
+                    return false
+               }
+               let index2=lectura[index].productos.indexOf(buscado2)
+               lectura[index].productos.splice(index2,1)
+                try {
+                    await fs.promises.writeFile("./"+this.nombre,JSON.stringify(lectura,null,2))
+                    console.log(`se borro id ${iddado}`)
+                    return true
+                } catch (error) {
+                    console.log(`Error al reescribir el archivo ${error}`)
+                    return false
+                }
+           
+
+        } catch (error) {
+            console.log(`no se pudo ejecutar ninguna accion! Error ${error}`)
+            return false
+        }
+    }
+
+
+
+
     
     async deleteAll(){
         try {
@@ -207,31 +303,7 @@ class Contenedor{
 
 module.exports = Contenedor;
 
-objetoPrueba={
-    title: 'Escuadra',
-    price: 123.45,
-    thumbnail: 'http://localhost:8080/picturel-256.png',
-}
-objetoPrueba2={
-    title: 'Calculadora',
-    price: 234.56,
-    thumbnail: 'http://localhost:8080/picture.png',
-}
 
-objetoPrueba4={
-    title: 'GLobo Terraqueo',
-    price: 345.56,
-    thumbnail: 'http://localhost:8080/picture.png',
-}
-
-//EJECUCION!
-
-const nuevaInstancia=new Contenedor("productos.txt")
-
-
-// nuevaInstancia.save(objetoPrueba)
-// nuevaInstancia.save(objetoPrueba2)
-// nuevaInstancia.save(objetoPrueba4)
 
 
 

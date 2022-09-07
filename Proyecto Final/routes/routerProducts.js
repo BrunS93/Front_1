@@ -1,4 +1,4 @@
-const { application } = require("Express");
+
 const express= require("Express");
 const {Router}= express;
 
@@ -9,15 +9,17 @@ const routerProducts=Router();
 routerProducts.use(express.static(__dirname + "/src"));
 
 routerProducts.use((req, res, next)=>{
-  const {body}=req
-  if(body){
-    if(body.Admin=="off")
-    res.status(403).json({ error : -1, descripcion: "Ruta método o no autorizado. Obtenga Permisos de administrador" }
-    )
+  if(req.method!="GET"){
+    if(req.body.Admin===false){
+      console.log("Sin credenciales de admin")
+      return res.json({ error : -1, descripcion: "Ruta método o no autorizado. Obtenga Permisos de administrador" });
+    }
+    
+    return next();
   }
-
-  next();
+ next();
 })
+
 
 routerProducts.get('/', (req, res) => {
 
@@ -29,7 +31,7 @@ res.sendFile(__dirname+"/src/Home.html")
   routerProducts.get('/:id?', (req, res) => {
     
     let {id} = req.params;
-    if(!id){ 
+    if(!id || isNaN(id)){ 
       let getpage;
           async function getall(){
             try {
@@ -50,10 +52,10 @@ res.sendFile(__dirname+"/src/Home.html")
             let getid=await metodProductos.getById(numerador)
             if(getid)
             {
-              res.json(getid)
+              return res.json(getid)
             }
             else{
-              res.json({error:"producto no encontrado!"});
+              return res.json({error:"producto no encontrado!"});
             }
         } catch (error) {
           return res.json({error: "ERROR NO SE PUDO OBTENER LOS PRODUCTOS DE LA BASE DE DATOS"})
@@ -70,15 +72,19 @@ res.sendFile(__dirname+"/src/Home.html")
   
   
   
-  //Post un producto y lo devuelve con su id asignado
+ 
   routerProducts.post('/', (req, res) => {
+
+    
       const {body} =req;
-      body.price= parseFloat(body.price)
+      if(body.Admin){
+        delete body.Admin
+      }
+      body.Precio= parseFloat(body.Precio)
       async function postear(){
         try {
-          let finish= await metodProductos.save(body)
-          res.json(finish);
-          
+          await metodProductos.save(body)
+          return res.json({ok: "success"})
         } catch (error) {
           return res.json({error: "no se pudo guardar el producto en base de datos!"})
         }
@@ -92,15 +98,18 @@ res.sendFile(__dirname+"/src/Home.html")
   //put recibe y actualiza segun ID
   routerProducts.put('/:id', (req, res) => {
       let {id}= req.params;
-      const body= req.body
+      const body= req.body;
+      if(body.Admin){
+        delete body.Admin
+      }
       let editid=parseInt(id)
       async function routerPut(){
         let validacion = await metodProductos.update(editid,body)
         if(!validacion)
         {
-          res.json({error:"no se pudo actualizar el id en base de datos / no existe o el archivo esta vacio!"})
+          return res.json({error:"no se pudo actualizar el id en base de datos / no existe o el archivo esta vacio!"})
         }
-        res.json({success: "Done", coments:"se modifico la base de datos"})
+        return res.json({success: "Done", coments:"se modifico la base de datos"})
   
       }
       routerPut();
@@ -110,20 +119,15 @@ res.sendFile(__dirname+"/src/Home.html")
   
   //elimina segun su id
   routerProducts.delete('/:id', (req, res) => {
+    async function deletid(){
      let {id} = req.params
      let deleteid= parseInt(id)
-    async function deletid(){
-      let validacion= await metodProductos.deleteById(deleteid)
-      if(!validacion)
-      {
-        res.json({error:"no se pudo borrar id especificado / no se encontro archivo o esta vacio!"})
-      }
-      res.json({success: "Done",coments: "se borro archivo de la base de datos"})
+     console.log(deleteid)
+       await metodProductos.deleteById(deleteid); 
+       return res.status(200).json({ok:"sucess"})
     }
     deletid()
-    });
-  
-
-
+    }); 
+    
 
 module.exports=routerProducts;

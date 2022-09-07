@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "TimestampCarrito": "6/9/2022",
+    "productos": [
+      {
+        "Nombre": "Carne Novillito",
+        "Timestamp": "1/09/2022",
+        "Descripcion": "Carne vacuna calidad Premium",
+        "Codigo": "ADCER",
+        "Precio": 154.54,
+        "Stock": "Disponible",
+        "Url": "https://static1.diariovasco.com/www/multimedia/201906/03/media/cortadas/carne-roja-kS1C-U10120674608CvG-984x468@Diario%20Vasco.jpg",
+        "id": 1
+      }
+    ]
+  }
+]

@@ -23,25 +23,52 @@
 </header>
 
 <section id="deCompras">
-     <h1>De Compras Market <i class="fa-solid fa-truck-fast"></i></h1>
+
+    <h1>De Compras Market <i class="fa-solid fa-truck-fast"></i></h1>
+    <h2>Haga sus pedidos de forma online y se lo llevamos a su domicilio</h2>
+    <div class="user-options">
         
-     <h2>Haga sus pedidos de forma online y se lo llevamos a su domicilio</h2>
+        
+        <img src="./shopping.png" id="carritoimg" alt="añadir al carrito">
+        <span id="selectCarritotext">Eliga CARRITO-ID</span> <input type="text" name="numcarrito" id="numcarrito">
+        <input class="verButton buttonHover" type="button" onclick="mostrarProducts()" value="Ver Productos">
+        <input class="verButton2 buttonHover" type="button" onclick="getCarrito()" value=" Ver Carrito">
+        <input class="verButton3 buttonHover" type="button" onclick="crearCarrito()" value=" Crear Carrito">
+        <input class="verButton4 buttonHover" type="button" onclick="eliminarCarrito()" value="Eliminar Carrito">
 
-      
+    </div>
 
-     
-        <label for="nombre">Ingrese nuevo producto</label>
-        <input type="text" name="producto" id="nombre">
 
-        <input type="radio" name="Admin" id="admin">
-        <label for="admin">Admin</label>
 
-        <label for="Usuario">Usuario</label>
-        <input type="radio" name="Usuario" id="Usuario">
+    <div id="admin-options"> 
+    <img src="./admin.png" id="imageadmin"alt="adminaccess">
+    <p class="title-admin">Solo para Administradores (Marcar)</p>
+    <label for="admin"> Soy Admin</label>
+    <input type="radio" name="Admin"  id="admin">
 
-        <input type="button" onclick="envio()" value="Guardar Producto">
-        <input id="verButton" type="button" onclick="mostrarProducts()" value="Ver Productos">
-        <div id="deComprasProducts"></div>
+    <label class="add"for="Nombre">Ingrese nuevo producto</label>
+    <input class="add" type="text" name="Nombre" id="nombre">
+
+    <label class="add"for="Descripcion">Descripcion</label>
+    <input class="add" type="text" name="Descripcion" id="Descripcion">
+    
+    <label class="add"for="Precio">Precio</label>
+    <input class="add" type="number" name="Precio" id="Precio">
+
+    <label class="add"for="Codigo">Codigo</label>
+    <input class="add" type="text" name="Codigo" id="Codigo">
+    
+    <label class="add"for="Stock">Stock</label>
+    <input class="add" type="text" name="Stock" id="Stock">
+
+    <label class="add"for="Url">Url</label>
+    <input class="add" type="text" name="Url" id="Url">
+   
+    <input class="add" type="button" id="Gproduct" onclick="envio()" value="Guardar Producto">
+    
+</div>
+
+<div id="deComprasProducts"></div>
 
 </section>
 
