@@ -15,25 +15,59 @@ class Contenedor{
     }
     
 
+    async savethechat(Object){
+     
+      try {
+       let exists= await this.knex.schema.hasTable(this.nametabla)
+           if (!exists) {
+             await this.knex.schema.createTable(this.nametabla, (t)=> {
+               t.increments('id').primary();
+               t.string('email', 100);
+               t.string('textchat',100);
+               t.string('hourmessage',100);
+             })
+            console.log("Se genero tabla")
+           }
+     
+       
+        let verificado =await this.knex(this.nametabla).insert(Object)
+        if(verificado){
+          return verificado
+        }
+
+      } 
+ 
+      catch (error) {
+       console.log("error "+ error)
+       return false
+
+   } 
+      
+      
+   }
+   
+
+
+
     async save(Object){
      
        try {
-        this.knex.schema.hasTable(this.nametabla).then((exists)=>{
-            if (!exists) {
-              this.knex.schema.createTable(this.nametabla, (t)=> {
-                t.increments('id').primary();
-                t.string('title', 100);
-                t.decimal('price', 8,2);
-                t.string('thumbnail',100);
-              }).then(()=>{console.log("Se genero tabla")}).finally(() => this.knex.destroy())
-            }
+         let exists=await this.knex.schema.hasTable(this.nametabla)
+          if (!exists) {
+            this.knex.schema.createTable(this.nametabla, (t)=> {
+              t.increments('id').primary();
+              t.string('title', 100);
+              t.decimal('price', 8,2);
+              t.string('thumbnail',100);
+            })
+            console.log("Se genero tabla")
+          }
 
-            this.knex(this.nametabla)
-            .insert(Object).
-            then(()=>{console.log("Se guardo en base de datos")}).finally(() => this.knex.destroy())
-          })
+        let confirm= await this.knex(this.nametabla).insert(Object)
+        return confirm
+        
+        }
        
-       } 
 
        catch (error) {
         console.log("error "+ error)
@@ -48,16 +82,16 @@ class Contenedor{
     
   async getAll(){
     try {
-      let result;
-      await this.knex.from("products").select("*").then((res) =>{
+     let result;
+      let res= await this.knex.from("products").select("*")
         result = res.map((item) => ({
                 id: item.id,
                 title: item.title,
                 price: item.price,
                 thumbnail: item.thumbnail,
         }))
-       })
-      .finally(()=>this.knex.destroy())
+      
+      
       return result
 
 
@@ -68,6 +102,31 @@ class Contenedor{
 
     }
   
+
+}
+
+async getAllChat(){
+  try {
+    let result;
+    let response= await this.knex.from("products").select("*")
+      result = response.map((item) => ({
+              email: item.email,
+              textchat: item.textchat,
+              hourmessage: item.hourmessage
+              
+      }))
+    return result
+
+    
+
+
+  } catch (error) {
+    
+    console.log("error "+ error)
+    return false
+
+  }
+
 
 }
 

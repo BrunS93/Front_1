@@ -38,7 +38,8 @@ function enviarChat(){
   }
   document.getElementById("error").innerText="";
   let textchat=document.getElementById("msg").value;
-
+  let hourmessage = Date()
+  enviObject.hourmessage=hourmessage
   enviObject.email=email;
   enviObject.textchat=textchat;
   socket.emit("chatactive", enviObject);
@@ -47,14 +48,14 @@ function enviarChat(){
 
 socket.on("chatactive",(object)=>{
   console.log("chat refresh received")
-  let hourmessage = Date()
+ console.log(object)
   html=""
   chat=""
   for(const e of object)
   {
     
      html = `<span class="email">${e.email}</span>
-                <span class="hora">${hourmessage}</span>
+                <span class="hora">${e.hourmessage}</span>
                 <span class="message">${e.textchat}<br>`
 
     chat=html+chat;

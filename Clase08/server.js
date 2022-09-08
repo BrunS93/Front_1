@@ -31,21 +31,16 @@ io.on('connection', socket => {
                                           
 
   socket.on("chatactive",(data)=>{
-    async function saveChats(){
-      try {
-       await backchats.save(data)
-      } catch (error) {
-        io.sockets.emit("errorOnline",error)
-      }
 
-      try {
-        let lectura =await backchats.getAll()
-        io.sockets.emit("chatactive",lectura)
-       } catch (error) {
-        io.sockets.emit("errorOnline",error)
-       }
+    async function guardarypostear(){
+      await backchats.savethechat(data)
+      let lectura=await backchats.getAllChat()
+      io.sockets.emit("chatactive",lectura)
+      
     }
-    saveChats();
+   
+    guardarypostear();   
+      
 
   })
   
@@ -67,7 +62,6 @@ app.post('/', (req, res) => {
     try {
      await metodProductos.save(body);
      const lect =await metodProductos.getAll();
-     if(!lect){console.log("first")}
      lista1=lect
     } catch (error) {
       return res.render('pages/error',{title: "Error", vacio: "Error al guardar el Producto"})

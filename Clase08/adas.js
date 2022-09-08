@@ -1,4 +1,3 @@
-const { kStringMaxLength } = require("buffer");
 const { optionsMariaDB } = require("./options/optionsMariaDB");
 const knexMariaDB = require("knex")(optionsMariaDB);
 
