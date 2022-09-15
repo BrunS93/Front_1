@@ -62,7 +62,13 @@ db.productos.estimadedDocumentCount()
 
 
 
+6)) 
+db.createUser({user:"pepe",pwd:"asd456",roles:[{role:"read",db:"ecommerce}]})
 
+
+reiniciar y levantar servidor con --auth
+
+iniciar sesion con mongo -u pepe -p asd456
 
 
 
