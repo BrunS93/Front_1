@@ -1,10 +1,76 @@
-use ecommerce
 
+
+1)//crear ecommerce y dos colecciones
+use ecommerce
 
 db.createCollections("mensajes")
 db.createCollections("productos")
+
+
+2) //agregar productos en las dos colleciones
+
 
 db.productos.insertMany([{title:"escuadra",price:150,thumbnail:"https://URL"},{title:"globoterraqueo",price:190,thumbnail:"https://URL"},{title:"camion",price:250,thumbnail:"https://URL"}])
 db.productos.insertMany([{title:"manzana",price:390,thumbnail:"https://URL"},{title:"escoba",price:420,thumbnail:"https://URL"},{title:"lapiz",price:560,thumbnail:"https://URL"}])
 db.productos.insertMany([{title:"calculadora",price:650,thumbnail:"https://URL"},{title:"microscopio",price:990,thumbnail:"https://URL"},{title:"reloj",price:1550,thumbnail:"https://URL"}])
 db.productos.insertOne({title:"pizarron",price:3500,thumbnail:"https://URL"})
+
+
+db.mensajes.insertMany([{email:"calle@yahoo.com" ,textchat:"hola", timestamp:new Date()},
+{email:"alfonso@hotmail.com" ,textchat:"hola un gusto", timestamp:new Date()},
+{email:"calle@yahoo.com" ,textchat:"quiero comprar productos", timestamp:new Date()},
+{email:"alfonso@yahoo.com" ,textchat:"yo igual", timestamp:new Date()},
+{email:"coder@yahoo.com" ,textchat:"hola", timestamp:new Date()},
+{email:"eltrece@yahoo.com" ,textchat:"hola", timestamp:new Date()},
+{email:"telefe@yahoo.com" ,textchat:"hola", timestamp:new Date()},
+{email:"c5n@yahoo.com" ,textchat:"hola", timestamp:new Date()},
+{email:"caba@yahoo.com" ,textchat:"hola", timestamp:new Date()},
+{email:"espn@yahoo.com" ,textchat:"hola", timestamp:new Date()}])
+
+
+3)//Listar todas los documentos de las colecciones
+
+db.productos.find()
+db.mensajes.find()
+
+
+4)//
+db.mensajes.estimadedDocumentCount()
+db.productos.estimadedDocumentCount()
+
+
+
+5)//
+   a))   db.productos.insertOne({title:"marcador",price: 4000,thumbnail:"https://URL"})
+
+   b)))
+
+       i))   db.productos.find({"price":{$lt:1000}})
+
+       ii)))  db.productos.find({ $and: [{ "price": {$gte: 1000}}, {"price": {$lte: 3000}} ]})
+      iii))   db.productos.find({"price":{$gt:3000}})
+       iv)) db.productos.find({},{"title":1}).sort({"price":-1}).limit(1).skip(2)
+
+    c))
+	 db.productos.updateMany({},{$set:{stock:100}})
+
+    
+     d)) db.productos.updateMany({"price":{$gt:4000}},{$set:{stock:0}})
+
+     e)) db.productos.deleteMany({"price":{$lt:1000}})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
