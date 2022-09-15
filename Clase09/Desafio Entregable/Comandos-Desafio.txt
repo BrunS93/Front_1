@@ -1,3 +1,10 @@
 use ecommerce
+
+
 db.createCollections("mensajes")
 db.createCollections("productos")
+
+db.productos.insertMany([{title:"escuadra",price:150,thumbnail:"https://URL"},{title:"globoterraqueo",price:190,thumbnail:"https://URL"},{title:"camion",price:250,thumbnail:"https://URL"}])
+db.productos.insertMany([{title:"manzana",price:390,thumbnail:"https://URL"},{title:"escoba",price:420,thumbnail:"https://URL"},{title:"lapiz",price:560,thumbnail:"https://URL"}])
+db.productos.insertMany([{title:"calculadora",price:650,thumbnail:"https://URL"},{title:"microscopio",price:990,thumbnail:"https://URL"},{title:"reloj",price:1550,thumbnail:"https://URL"}])
+db.productos.insertOne({title:"pizarron",price:3500,thumbnail:"https://URL"})
