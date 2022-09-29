@@ -2,10 +2,9 @@
 //IMPORTAR SERVIDOR
 
 
+import fs from "fs"
 
-const fs=require("fs")
-
-class Contenedor{
+export class Contenedor{
     constructor(nombreArchivo){
         this.nombre=nombreArchivo;
     }
@@ -205,33 +204,9 @@ class Contenedor{
 
 }
 
-module.exports = Contenedor;
-
-objetoPrueba={
-    title: 'Escuadra',
-    price: 123.45,
-    thumbnail: 'http://localhost:8080/picturel-256.png',
-}
-objetoPrueba2={
-    title: 'Calculadora',
-    price: 234.56,
-    thumbnail: 'http://localhost:8080/picture.png',
-}
-
-objetoPrueba4={
-    title: 'GLobo Terraqueo',
-    price: 345.56,
-    thumbnail: 'http://localhost:8080/picture.png',
-}
-
-//EJECUCION!
-
-const nuevaInstancia=new Contenedor("productos.txt")
 
 
-// nuevaInstancia.save(objetoPrueba)
-// nuevaInstancia.save(objetoPrueba2)
-// nuevaInstancia.save(objetoPrueba4)
+
 
 
 

@@ -1,11 +1,14 @@
-const express= require("Express");
+import express from 'express'
 const {Router}= express;
-const Contenedor = require("../Carrito");
+
+import {Contenedor} from "../Carrito.js";
 const metodCarrito=new Contenedor("Carrito.txt");
 
-const Contenedor2=require("../Productos");
+import {Contenedor as Contenedor2} from "../Productos.js";
 const metodProductos=new Contenedor2("productos.txt")
-const routerCarrito=Router();
+
+
+ const routerCarrito=Router();
 
 
 
@@ -122,4 +125,4 @@ const routerCarrito=Router();
      });
 
 
-module.exports=routerCarrito;
+export default routerCarrito

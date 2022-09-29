@@ -3,9 +3,9 @@
 
 
 
-const fs=require("fs")
+import fs from "fs";
 
-class Contenedor{
+export class Contenedor{
     constructor(nombreArchivo){
         this.nombre=nombreArchivo;
     }
@@ -301,7 +301,7 @@ class Contenedor{
 
 }
 
-module.exports = Contenedor;
+
 
 
 

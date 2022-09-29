@@ -1,11 +1,15 @@
 
-const express= require("Express");
+import express from 'express';
 const {Router}= express;
 
-const Contenedor = require("../Productos");
+import {Contenedor} from "../Productos.js";
 const metodProductos=new Contenedor("productos.txt");
-
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const routerProducts=Router();
+
 routerProducts.use(express.static(__dirname + "/src"));
 
 routerProducts.use((req, res, next)=>{
@@ -130,4 +134,4 @@ res.sendFile(__dirname+"/src/Home.html")
     }); 
     
 
-module.exports=routerProducts;
+export default routerProducts;

@@ -1,7 +1,8 @@
-const express= require("Express");
+import express from 'express';
 const app=express();
-const routesProduct=require("./routes/routerProducts");
-const routesCarrito=require("./routes/routerCarrito");
+
+import routerProducts from "./routes/routerProducts.js";
+import routerCarrito from "./routes/routerCarrito.js";
 
 const PORT=process.env.PORT || 8080;
 
@@ -9,8 +10,8 @@ const PORT=process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/api/products",routesProduct);
-app.use("/api/carrito",routesCarrito);
+app.use("/api/products",routerProducts);
+app.use("/api/carrito",routerCarrito);
 app.all("*",(req,res)=>{
     res.json({
       error:-2,
